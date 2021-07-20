@@ -25,13 +25,13 @@ class ProdutoController extends Controller
     }
 
     public function add(Request $request){ 
+        
         //$request->file('imagem')->store('teste');
         //dd($request->file('imagem'),$request->all());
         $produto = new Produto;
         $produto = $produto->create($request->all());
 
-        
-        $num = count($request->allFiles()['imagem']);
+        $num = count($request->allFiles());
         if($num>3){
             dd('invalido:numero de imagens superior a 3');
         }
@@ -45,8 +45,6 @@ class ProdutoController extends Controller
                 unset($imagemProduto);
             } 
         }
-
-        
 
         $historico = new Historico;
     
@@ -105,7 +103,11 @@ class ProdutoController extends Controller
         $historico->save();
         return Redirect::to('/');
     }
+
     public function historico(){
-        return view('produtos.historico');
+        $historico = Historico::get();
+        return view('produtos.historico', [ 
+                    'historico'=>$historico
+    ]);
     }
 }
