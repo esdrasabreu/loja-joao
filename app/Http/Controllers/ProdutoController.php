@@ -28,14 +28,17 @@ class ProdutoController extends Controller
         
         //$request->file('imagem')->store('teste');
         //dd($request->file('imagem'),$request->all());
+
+
+        $num = count($request->allFiles());
+        if($num>0){
+            if(count($request->allFiles()['imagem'])>3){
+                dd('invalido:numero de imagens superior a 3');
+            }
+            
         $produto = new Produto;
         $produto = $produto->create($request->all());
 
-        $num = count($request->allFiles());
-        if($num>3){
-            dd('invalido:numero de imagens superior a 3');
-        }
-        if($num>0 && $num <4){
             for($i=0; $i < count($request->allFiles()['imagem']);$i++){
                 $file= $request->allFiles()['imagem'][$i];
                 $imagemProduto = new ImagemProduto();

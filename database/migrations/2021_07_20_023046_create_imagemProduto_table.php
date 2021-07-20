@@ -16,7 +16,7 @@ class CreateImagemProdutoTable extends Migration
         Schema::create('imagemProduto', function (Blueprint $table) {
             $table->id();
             $table->string('path');
-            $table->foreignId('produto_id')->constrained('produtos');
+            $table->foreignId('produto_id')->constrained('produtos')->onDelete('cascade');
         });
     }
 
