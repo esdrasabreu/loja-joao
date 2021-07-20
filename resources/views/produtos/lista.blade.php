@@ -17,7 +17,7 @@
                     <h2>Lista de produtos</h2>
                     
                     <a href="{{url('produtos/new')}}" class="btn btn-success">Cadastrar produtos</button>
-                    <a href="{{url('produtos')}}" class="btn btn-secondary">Historico</a>
+                    <a href="{{url('produtos/historico')}}" class="btn btn-secondary">Historico</a>
                     <table class="table table-bordered">
                         <thead>
                           <tr>
