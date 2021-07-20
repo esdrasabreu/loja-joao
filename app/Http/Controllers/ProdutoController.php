@@ -35,7 +35,7 @@ class ProdutoController extends Controller
         if($num>3){
             dd('invalido:numero de imagens superior a 3');
         }
-        if($num>0 && $num >3){
+        if($num>0 && $num <4){
             for($i=0; $i < count($request->allFiles()['imagem']);$i++){
                 $file= $request->allFiles()['imagem'][$i];
                 $imagemProduto = new ImagemProduto();
